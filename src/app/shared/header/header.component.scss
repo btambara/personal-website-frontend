@@ -1,3 +1,20 @@
-* {
-    margin: 0;
+a.logo {
+    opacity: 1.0;
+}
+
+a {
+    opacity: 0.5;
+}
+
+p {
+    margin-left: 1%;
+    font-size: small;
+}
+
+span {
+    margin-right: auto;
+}
+
+.active-link {
+    opacity: 1.0;
 }
