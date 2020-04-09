@@ -1,5 +1,34 @@
-* {
-    background-color: yellow;
+div.main {
+    background-image: url('/assets/images/backgrounds/ascot-sunset-bw-1614x909.png');
+    background-size: cover;
     height: 100%;
-    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+div.introduction {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    margin-top: 15%;
+    width: auto;
+    height: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+}
+
+div.citation {
+    text-align: end;
+    color: white;
+    font-size: x-small;
+    margin-right: 1%;
+    margin-top: 8%;
+}
+
+p {
+    color: white;
+    font-size: x-large;
+}
+
+h1 {
+    color: white;
 }
