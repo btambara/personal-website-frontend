@@ -1,0 +1,50 @@
+@import "~@angular/material/theming";
+
+$personal-website-frontend-accent: mat-palette($mat-gray, 500);
+
+div.main {
+    display: flex;
+    background-color: mat-color($personal-website-frontend-accent);
+    height: 100%;
+}
+
+img {
+    height: 100%;
+}
+
+mat-card {
+    margin: 2%;
+    width: 100%;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+a:active {
+    color: white;
+}
+
+div.about {
+    margin: 1%;
+}
+
+mat-card-title {
+    font-size: xx-large;
+}
+
+mat-card-subtitle {
+    font-size: x-large;
+}
+
+mat-card-content {
+    font-size: medium;
+}
