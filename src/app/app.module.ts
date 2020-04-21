@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule, MatButton} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import {MatChipsModule} from '@angular/material/chips';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -30,7 +33,11 @@ import { ResumeComponent } from './pages/resume/resume.component';
     MatToolbarModule,
     MatButtonModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatChipsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
