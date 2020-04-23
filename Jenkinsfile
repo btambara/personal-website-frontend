@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                sh 'npm install'
+                sh 'ng build --prod --aot'
             }
         }
         stage('Test') {
