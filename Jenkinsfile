@@ -1,14 +1,14 @@
 pipeline {
     agent any
  
-    tools {
-        nodejs "node"
-    }
+    // tools {
+    //     nodejs "node"
+    // }
 
     stages {
         stage('Prepare') {      
             steps {        
-                sh "npm install"
+                sh "apk add nodejs"
             }    
         }
         stage('Build') {
