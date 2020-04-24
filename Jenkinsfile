@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Prepare') {      
             steps {        
-                sh "apk add nodejs"
+                sh "sudo apk add nodejs"
             }    
         }
         stage('Build') {
