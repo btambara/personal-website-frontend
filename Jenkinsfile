@@ -1,14 +1,15 @@
 pipeline {
     agent any
- 
-    tools {
-        nodejs "node"
+
+    agent { docker { image 'node:6.14.4' } }
+    environment {
+        HOME = '.'
     }
 
     stages {
         stage('Prepare') {      
             steps {        
-                sh "npm config ls"
+                sh "npm install"
             }    
         }
         stage('Build') {
