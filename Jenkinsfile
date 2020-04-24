@@ -4,11 +4,15 @@ pipeline {
     tools {
         nodejs "node"
     }
-    
+
     stages {
+        stage('Prepare') {      
+            steps {        
+                sh "npm install"
+            }    
+        }
         stage('Build') {
             steps {
-                sh 'npm install'
                 sh 'ng build --prod --aot'
             }
         }
