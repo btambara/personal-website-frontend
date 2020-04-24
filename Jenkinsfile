@@ -1,14 +1,14 @@
 pipeline {
     agent any
  
-    // tools {
-    //     nodejs "node"
-    // }
+    tools {
+        nodejs "node"
+    }
 
     stages {
         stage('Prepare') {      
             steps {        
-                sh "sudo apk add nodejs"
+                sh "npm config ls"
             }    
         }
         stage('Build') {
