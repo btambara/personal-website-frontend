@@ -3,9 +3,7 @@ pipeline {
 
     stages {
         stage('Prepare') {   
-            agent {
-                docker 'node:10.14.0-alpine'
-            }   
+            tools {nodejs "node"}
             steps {        
                 sh 'npm install'
             }    
