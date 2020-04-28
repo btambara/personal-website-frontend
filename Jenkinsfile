@@ -1,20 +1,25 @@
 pipeline {
-    agent { dockerfile true }
-
+    agent any
+    environment {
+        registry = "btambara/personal-website-frontend"
+        registryCredential = ‘dockerhub’
+        dockerImage = ''
+    }
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Build DockerImage'
+                script {
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....DockerImage'
+        stage('Deploy Docker Image') {
+            steps{
+                script {
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
+                }
             }
         }
     }
