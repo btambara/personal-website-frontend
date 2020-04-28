@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         registry = "btambara/personal-website-frontend"
-        registryCredential = ‘dockerhub’
+        registryCredential = 'dockerhub'
         dockerImage = ''
     }
     stages {
