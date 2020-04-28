@@ -11,18 +11,18 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get update && apt-get install -yq google-chrome-stable
 
 # set working directory
-WORKDIR /app
+WORKDIR /personal-website-frontend
 
 # add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH /personal-website-frontend/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY package.json /app/package.json
+COPY package.json /personal-website-frontend/package.json
 RUN npm install
 RUN npm install -g @angular/cli@8.2.0
 
 # add app
-COPY . /app
+COPY . /personal-website-frontend
 
 # generate build
 RUN ng build --output-path=dist
@@ -35,7 +35,7 @@ RUN ng build --output-path=dist
 FROM nginx:1.16.0-alpine
 
 # copy artifact build from the 'build environment'
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /personal-website-frontend/dist /usr/share/nginx/html
 
 # expose port 80
 EXPOSE 80
