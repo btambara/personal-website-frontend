@@ -1,16 +1,10 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
 
     stages {
-        stage('Prepare') {   
-            tools {nodejs "node"}
-            steps {        
-                sh 'npm install'
-            }    
-        }
         stage('Build') {
             steps {
-                sh 'ng build --prod --aot'
+                echo 'Build DockerImage'
             }
         }
         stage('Test') {
@@ -20,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying....DockerImage'
             }
         }
     }
