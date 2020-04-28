@@ -3,9 +3,17 @@
 
 # We label our stage as ‘builder’
 FROM node:10-alpine as builder
+MAINTAINER Brian Tambara <btambara@gmail.com>
 
 COPY package.json package-lock.json ./
 
+RUN apk --no-cache --virtual build-dependencies add \
+    python \
+    make \
+    g++ \
+    && npm install \
+    && apk del build-dependencies
+    
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
 RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
