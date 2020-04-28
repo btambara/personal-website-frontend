@@ -1,43 +1,48 @@
+#############
+### build ###
+#############
 
-### STAGE 1: Build ###
+# base image
+FROM node:12.2.0 as build
 
-# We label our stage as ‘builder’
-FROM node:10-alpine as builder
-MAINTAINER Brian Tambara <btambara@gmail.com>
+# install chrome for protractor tests
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update && apt-get install -yq google-chrome-stable
 
-COPY package.json package-lock.json ./
+# set working directory
+WORKDIR /app
 
-RUN apk --no-cache --virtual build-dependencies add \
-    python \
-    make \
-    g++ \
-    && npm install \
-    && apk del build-dependencies
-    
-## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+# install and cache app dependencies
+COPY package.json /app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@7.3.9
 
-WORKDIR /ng-app
+# add app
+COPY . /app
 
-COPY . .
+# run tests
+RUN ng test --watch=false
+RUN ng e2e --port 4202
 
-## Build the angular app in production mode and store the artifacts in dist folder
+# generate build
+RUN ng build --output-path=dist
 
-RUN npm run ng build -- --prod --output-path=dist
+############
+### prod ###
+############
 
+# base image
+FROM nginx:1.16.0-alpine
 
-### STAGE 2: Setup ###
+# copy artifact build from the 'build environment'
+COPY --from=build /app/dist /usr/share/nginx/html
 
-FROM nginx:1.14.1-alpine
+# expose port 80
+EXPOSE 80
 
-## Copy our default nginx config
-COPY nginx/default.conf /etc/nginx/conf.d/
-
-## Remove default nginx website
-RUN rm -rf /usr/share/nginx/html/*
-
-## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
-COPY --from=builder /ng-app/dist /usr/share/nginx/html
-
+# run nginx
 CMD ["nginx", "-g", "daemon off;"]
