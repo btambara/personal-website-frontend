@@ -44,7 +44,6 @@ span {
     opacity: 1;
 }
 
-
 mat-toolbar-row.mobile-row {
     display: block;
     @media (min-width: #{$screen-md-min}) {
@@ -52,4 +51,34 @@ mat-toolbar-row.mobile-row {
     }
 }
 
+a.button-link {
+    display: none;
+    @media (min-width: #{$screen-md-min}) {
+        display: inline;
+    }
+}
 
+button.menu-button-mobile {
+    display: block;
+    @media (min-width: #{$screen-md-min}) {
+        display: none;
+    }
+}
+
+button.menu-selection {
+    opacity: 0.5;
+}
+
+button.active-link {
+    opacity: 1;
+}
+
+::ng-deep .mat-menu-panel {
+    padding: 0 10px!important;
+    width: 30vw!important;
+    align-items: left;
+    display: block;
+    @media (min-width: #{$screen-md-min}) {
+        display: none;
+    }
+  }

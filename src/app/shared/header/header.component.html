@@ -7,9 +7,26 @@
         <p class="main-row">I want to make things that make a difference.</p>
         <span></span>
         <div class="nav-router">
-            <a mat-button routerLink="/home" routerLinkActive="active-link"> Home </a>
-            <a mat-button routerLink="/about" routerLinkActive="active-link"> About </a>
-            <a mat-button routerLink="/resume" routerLinkActive="active-link"> Resume </a>
+            <a class="button-link" mat-button routerLink="/home" routerLinkActive="active-link"> Home </a>
+            <a class="button-link" mat-button routerLink="/about" routerLinkActive="active-link"> About </a>
+            <a class="button-link" mat-button routerLink="/resume" routerLinkActive="active-link"> Resume </a>
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button-mobile">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button class="menu-selection" mat-menu-item routerLink="/home" routerLinkActive="active-link">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+                <button class="menu-selection" mat-menu-item routerLink="/about" routerLinkActive="active-link">
+                    <mat-icon>perm_identity</mat-icon>
+                    <span>About</span>
+                </button>
+                <button class="menu-selection" mat-menu-item routerLink="/resume" routerLinkActive="active-link">
+                    <mat-icon>subject</mat-icon>
+                    <span>Resume</span>
+                </button>
+            </mat-menu>
         </div>
     </mat-toolbar-row>
     <mat-toolbar-row class="mobile-row">
