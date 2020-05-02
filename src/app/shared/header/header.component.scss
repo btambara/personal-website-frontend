@@ -1,14 +1,39 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
 a.logo {
-    opacity: 1.0;
+    opacity: 1;
 }
 
 a {
     opacity: 0.5;
 }
 
-p {
+p.main-row {
     margin-left: 1%;
     font-size: small;
+    display: none;
+    @media (min-width: #{$screen-md-min}) {
+        display: block;
+    }
+}
+
+p.mobile-row {
+    margin-left: 1%;
+    font-size: small;
+    display: block;
+    @media (min-width: #{$screen-md-min}) {
+        display: none;
+    }
 }
 
 span {
@@ -16,5 +41,15 @@ span {
 }
 
 .active-link {
-    opacity: 1.0;
+    opacity: 1;
 }
+
+
+mat-toolbar-row.mobile-row {
+    display: block;
+    @media (min-width: #{$screen-md-min}) {
+        display: none;
+    }
+}
+
+

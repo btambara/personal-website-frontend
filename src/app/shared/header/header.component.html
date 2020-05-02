@@ -1,15 +1,18 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
+    <mat-toolbar-row class="main-row">
         <a class="logo" mat-button [routerLink]="'/'">
             <img src="assets/images/logos/logo-48x48.png">
         </a>
         <h1>Brian Tambara</h1>
-        <p>I want to make things that make a difference.</p>
+        <p class="main-row">I want to make things that make a difference.</p>
         <span></span>
         <div class="nav-router">
             <a mat-button routerLink="/home" routerLinkActive="active-link"> Home </a>
             <a mat-button routerLink="/about" routerLinkActive="active-link"> About </a>
             <a mat-button routerLink="/resume" routerLinkActive="active-link"> Resume </a>
         </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="mobile-row">
+        <p class="mobile-row">I want to make things that make a difference.</p>
     </mat-toolbar-row>
 </mat-toolbar>
