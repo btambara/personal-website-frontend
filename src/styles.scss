@@ -27,5 +27,6 @@ $personal-website-frontend-theme: mat-dark-theme($personal-website-frontend-prim
 @include angular-material-theme($personal-website-frontend-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import "loading";
 html, body { height: 100%; background-color: mat-color($personal-website-frontend-accent);}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
