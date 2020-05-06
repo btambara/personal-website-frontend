@@ -22,5 +22,12 @@ pipeline {
                 }      
             }
         }
+        stage('Update Docker Host Image') {
+            steps{
+                script {
+                    sh 'docker ps'
+                }      
+            }
+        }
     }
 }
