@@ -32,7 +32,7 @@ RUN ng build --output-path=dist
 ############
 
 # base image
-FROM nginx:1.16.0-alpine
+FROM nginx
 
 RUN mkdir -p /var/www/briantambara.tk/public_html/
 RUN mkdir -p /var/www/briantambara.tk/logs/
