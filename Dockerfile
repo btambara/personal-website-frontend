@@ -34,11 +34,11 @@ RUN ng build --output-path=dist
 # base image
 FROM nginx:1.16.0-alpine
 
-RUN mkdir /var/www/briantambara.tk/htdocs/
-RUN mkdir /var/www/briantambara.tk/logs/
+RUN mkdir -p /var/www/briantambara.tk/public_html/
+RUN mkdir -p /var/www/briantambara.tk/logs/
 
 # copy artifact build from the 'build environment'
-COPY --from=build /personal-website-frontend/dist /var/www/briantambara.tk/htdocs/
+COPY --from=build /personal-website-frontend/dist /var/www/briantambara.tk/public_html/
 COPY --from=build /personal-website-frontend/ngnix /etc/nginx/sites-available/briantambara.tk
 
 RUN ln -s /etc/nginx/sites-available/briantambara.tk /etc/nginx/sites-enabled/briantambara.tk
