@@ -9,7 +9,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "printenv | sort"
                     dockerImage = docker.build registry + ":latest"
                 }
             }
