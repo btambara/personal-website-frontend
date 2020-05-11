@@ -3,7 +3,7 @@
 #############
 
 # base image
-FROM node:12.2.0 as build
+FROM node:12.2.0 as builder
 
 # install chrome for protractor tests
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -34,14 +34,9 @@ RUN ng build --output-path=dist
 # base image
 FROM nginx
 
-RUN mkdir -p /var/www/briantambara.tk/public_html/
-RUN mkdir -p /var/www/briantambara.tk/logs/
-
 # copy artifact build from the 'build environment'
-COPY --from=build /personal-website-frontend/dist /var/www/briantambara.tk/public_html/
-COPY --from=build /personal-website-frontend/ngnix /etc/nginx/sites-available/briantambara.tk
-
-RUN ln -s /etc/nginx/sites-available/briantambara.tk /etc/nginx/sites-enabled/briantambara.tk
+COPY --from=build /personal-website-frontend/dist /usr/share/nginx/html/
+COPY --from=build /personal-website-frontend/ngnix/briantambara.tk /etc/nginx/conf.d/default.conf
 
 # expose port 80
 EXPOSE 80
