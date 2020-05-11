@@ -35,8 +35,8 @@ RUN ng build --output-path=dist
 FROM nginx
 
 # copy artifact build from the 'build environment'
-COPY --from=build /personal-website-frontend/dist /usr/share/nginx/html/
-COPY --from=build /personal-website-frontend/ngnix/briantambara.tk /etc/nginx/conf.d/default.conf
+COPY --from=build-stage /personal-website-frontend/dist /usr/share/nginx/html/
+COPY --from=build-stage /personal-website-frontend/ngnix/briantambara.tk /etc/nginx/conf.d/default.conf
 
 # expose port 80
 EXPOSE 80
