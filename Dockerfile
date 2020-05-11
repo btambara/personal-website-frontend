@@ -36,7 +36,7 @@ FROM nginx:alpine
 
 # copy artifact build from the 'build environment'
 COPY --from=build-stage /personal-website-frontend/dist /usr/share/nginx/html/
-COPY  /personal-website-frontend/ngnix/briantambara.tk /etc/nginx/conf.d/default.conf
+COPY ./ngnix/briantambara.tk /etc/nginx/conf.d/default.conf
 
 # expose port 80
 EXPOSE 80
