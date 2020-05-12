@@ -1,7 +1,4 @@
-#############
-### build ###
-#############
-
+#Step 1
 # base image
 FROM node:12.2.0 as build-stage
 
@@ -13,6 +10,7 @@ ENV PATH /personal-website-frontend/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY package.json /personal-website-frontend/package.json
+COPY ./ngnix/briantambara.tk /ngnix/briantambara.tk
 RUN npm install
 
 # add app
@@ -20,10 +18,6 @@ COPY . /personal-website-frontend
 
 # generate build
 RUN ng build --output-path=dist
-
-############
-### prod ###
-############
 
 # base image
 FROM nginx:alpine
