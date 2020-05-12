@@ -10,7 +10,7 @@ ENV PATH /personal-website-frontend/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY package.json /personal-website-frontend/package.json
-COPY ./ngnix/briantambara.tk /ngnix/briantambara.tk
+COPY /personal-website-frontend/ngnix/briantambara.tk /ngnix/briantambara.tk
 RUN npm install
 
 # add app
