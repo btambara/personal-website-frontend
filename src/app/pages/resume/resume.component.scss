@@ -3,9 +3,12 @@ $personal-website-frontend-primary: mat-palette($mat-gray, 900);
 
 div.resume-intro {
     background-image: url("/assets/images/brian-halfmoon-1024x498-o50.png");
+    background-repeat: no-repeat;
     background-size: cover;
-    margin: auto;
-    height: 100%;
+}
+
+div.intro-profile {
+    padding-top: 1%;
 }
 
 mat-card.card-intro {
@@ -30,12 +33,13 @@ mat-card-content.card-intro-statement {
     font-size: larger;
 }
 
-div.intro-profile {
+div.intro-profile-items {
     display: flex;
     flex-direction: column;
     margin-top: 1%;
     margin-left: 10%;
     margin-right: 10%;
+    padding-bottom: 1%;
 }
 
 mat-card.card-intro-profile {
@@ -60,13 +64,16 @@ div.resume-end {
 mat-card.resume-title-section {
     margin-bottom: 2%;
 }
-
+.mat-list-item {
+    height: auto !important;
+}
 mat-card.resume-content-section {
     background-color: mat-color($personal-website-frontend-primary, 0.6);
     margin-left: 5%;
     margin-bottom: 2%;
+    height: auto;
 }
 
 mat-icon.list-icon {
-    margin-right: 1%;
+    margin-right: 5%;
 }
